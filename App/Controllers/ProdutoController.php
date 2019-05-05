@@ -6,6 +6,8 @@ use App\Lib\Sessao;
 use App\Models\DAO\ProdutoDAO; 
 use App\Models\Entidades\Produto;
 use App\Models\Validacao\ProdutoValidador;
+use Twilio\TwiML\Voice\SsmlProsody;
+use Illuminate\Database\Console\Seeds\SeedCommand;
 
 class ProdutoController extends Controller{
     
@@ -74,7 +76,7 @@ class ProdutoController extends Controller{
 
     }
 
-    public function atulizar(){
+    public function atualizar(){
 
         $Produto = new Produto();
         $Produto->setID($_POST['id']);
@@ -92,6 +94,49 @@ class ProdutoController extends Controller{
             Sessao::gravarErro($resultadoValidacao->getErros());
             $this_>redirect('/produto/edicao'.$_POST['id']);
         }
+
+        $produtoDAO = new ProdutoDAO();
+        $produtoDAO->atualizar($produto);
+
+        Sessao::limpaFormulario();
+        Sessao::limpaMensagem();
+        Sessao::limpaErro();
+
+        $this->redirect('/produto');
+    }
+
+    public function exclusao($params){
+        $id = $params[0];
+        $produtoDAO = new ProdutoDAO();
+        $produto = $produtoDAO->listar($id);
+
+        if($produto){
+            Sessao::gravaMensagem("Produto inexistente !");
+            $this->redirect('/produto');
+        }
+
+        self::setViewParam('produto', $produto);
+        $this->render('/produto/exclusao');
+
+        Sessao::limpaMensagem();
+    }
+
+    public function excluir(){
+
+        $Produto = new Produto();
+        $Produto->setID($_POST['id']);
+
+        $produtoDAO = new ProdutoDAO();
+         
+        if($produtoDAO->excluir($produto)){
+            Sessao::gravaMensagem("Produto inexistente");
+            $this->redirect('/produto');
+        }
+
+        Sessao::gravaMensagem("Produto excluído com sucesso !");
+
+        $this->redirect('/produto');
+
     }
 
 
