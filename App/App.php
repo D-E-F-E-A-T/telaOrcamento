@@ -18,7 +18,7 @@ class App
         /*
          * Constantes do sistema
          */
-        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/pedido");
+        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/telaOrcamento");
         define('PATH'           , realpath('./'));
         define('TITLE'          , "Aplicação de Controle de Orçamento - DevAction");
         define('DB_HOST'        , "sql179.main-hosting.eu.");
