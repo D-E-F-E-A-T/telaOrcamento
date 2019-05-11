@@ -7,7 +7,7 @@ use League\Flysystem\Exception;
 
 class ClienteDAO extends BaseDAO{
 
-    public function listarProduto($id = null){
+    public function listaCliente($id = null){
         
         if($id){
             $resultodo = $this-select(
@@ -35,7 +35,7 @@ class ClienteDAO extends BaseDAO{
             $cpf        = $cliente->getCpf();
 
             return $this->insert(
-                'cliente',
+                'cadCliente',
                 ":nome, :sobreNome, :cpf",
                 [
                     ':nome'=>$nome,
@@ -61,7 +61,7 @@ class ClienteDAO extends BaseDAO{
             $cpf              = $cliente->getCpf();
 
             return $this->update(
-                'cliente',
+                'cadCliente',
                 "nome = :nome, sobreNome = :sobreNome, cpf = :cpf",
                 [
                     ':codCliente'=>$id,
@@ -74,6 +74,17 @@ class ClienteDAO extends BaseDAO{
             );
         }catch (\Exception $e){
             throw new \Exception("Erro na gravação do dados", 500);
+        }
+    }
+
+    public function excluirCliente(Cliente $cliente){
+
+        try{
+            $id = $cliente->getCodCliente();
+
+            return $this->delete('cliente', "codCliente = $id");
+        }catch (Exception $e){
+            throw new \Exception("Erro ao Deletar cliente", 500);
         }
     }
 }

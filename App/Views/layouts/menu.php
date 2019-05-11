@@ -25,6 +25,9 @@
                 <li <?php if($viewVar['nameController'] == "ProdutoController" && $viewVar['nameAction'] == "cadastro") { ?> class="active" <?php } ?>>
                     <a href="http://<?php echo APP_HOST; ?>/produto/cadastro" >Cadastro de Produto</a>
                 </li>
+                <li <?php if($viewVar['nameController'] == "ClienteController" && $viewVar['nameAction'] == "cadastroCliente") { ?> class="active" <?php } ?>>
+                    <a href="http://<?php echo APP_HOST; ?>/cliente/cadastroCliente" >Cadastro de Cliente</a>
+                </li>
             </ul>
         </div>
     </div>
