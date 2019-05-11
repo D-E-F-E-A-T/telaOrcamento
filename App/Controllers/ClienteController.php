@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Lib\Sessao;
 use App\Models\DAO\ClienteDAO;
 use App\Models\Entidades\Cliente;
-use App\Models\Validacao\ClienteValidacao;
 use App\Models\Validacao\ClienteValidador;
 
 class ClienteController extends Controller{
