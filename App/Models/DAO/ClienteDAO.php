@@ -7,39 +7,39 @@ use League\Flysystem\Exception;
 
 class ClienteDAO extends BaseDAO{
 
-    public function listaCliente($id = null){
+    public function listaCliente($codCliente = null){
         
-        if($id){
-            $resultodo = $this-select(
-                "SELECT * FROM cadCliente WHERE codCliente = $id"
+        if($codCliente){
+            $resultado = $this-select(
+                "SELECT * FROM cadCliente WHERE codCliente = $codCliente"
             );
 
-            return $resultodo->fetchObject(Cliente::class);
+            return $resultado->fetchObject(Cliente::class);
         }else{
-            $resultodo = $this->select(
+            $resultado = $this->select(
                 'SELECT * FROM cadCliente'
             );
-            return $resultodo->fetchAll(\PDO::FETCH_CLASS, Cliente::class);
+            return $resultado->fetchAll(\PDO::FETCH_CLASS, Cliente::class);
         }
 
         return false;
 
     }
 
-    public function salvarCleinte(Cliente $cliente){
+    public function salvarCliente(Cliente $cliente){
 
         try{
 
-            $nome       = $cliente->getNome();
-            $sobreNome  = $cliente->getSobeNome();
+            $nome       = $cliente->getNomeCliente();
+            $sobreNome  = $cliente->getSobreNomeCliente();
             $cpf        = $cliente->getCpf();
 
             return $this->insert(
                 'cadCliente',
-                ":nome, :sobreNome, :cpf",
+                ":nomeCliente, :sobreNomeCliente, :cpf",
                 [
-                    ':nome'=>$nome,
-                    ':sobreNome'=>$sobreNome,
+                    ':nomeCliente'=>$nome,
+                    ':sobreNomeCliente'=>$sobreNome,
                     ':cpf'=>$cpf
                 ]
             );
@@ -56,21 +56,21 @@ class ClienteDAO extends BaseDAO{
         try{
 
             $id               = $cliente->getCodCliente();
-            $nome             = $cliente->getNome();
-            $sobreNome        = $cliente->getSobreNome();
+            $nome             = $cliente->getNomeCliente();
+            $sobreNome        = $cliente->getSobreNomeCliente();
             $cpf              = $cliente->getCpf();
 
             return $this->update(
                 'cadCliente',
-                "nome = :nome, sobreNome = :sobreNome, cpf = :cpf",
+                "nome = :nomeCliente, sobreNome = :sobreNomeCliente, cpf = :cpf",
                 [
-                    ':codCliente'=>$id,
-                    ':nome'      =>$nome,
-                    ':sobreNome' =>$sobreNome,
-                    ':cpf'       =>$cpf
+                    ':codCliente'       =>$id,
+                    ':nomeCliente'      =>$nome,
+                    ':sobreNomeCliente' =>$sobreNome,
+                    ':cpf'              =>$cpf
 
                 ],
-                "id = :codCliente"
+                "codCliente = :codCliente"
             );
         }catch (\Exception $e){
             throw new \Exception("Erro na gravação do dados", 500);
@@ -82,7 +82,7 @@ class ClienteDAO extends BaseDAO{
         try{
             $id = $cliente->getCodCliente();
 
-            return $this->delete('cliente', "codCliente = $id");
+            return $this->delete('cliente', "codCliente = $codCliente");
         }catch (Exception $e){
             throw new \Exception("Erro ao Deletar cliente", 500);
         }

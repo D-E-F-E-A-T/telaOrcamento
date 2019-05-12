@@ -7,6 +7,7 @@ use App\Models\DAO\ClienteDAO;
 use App\Models\Entidades\Cliente;
 use App\Models\Validacao\ClienteValidador;
 
+
 class ClienteController extends Controller{
 
     public function index(){
@@ -35,28 +36,20 @@ class ClienteController extends Controller{
 
         $Cliente = new Cliente();
         $Cliente->setNome($_POST['nome']);
-        $Cliente->setSobeNome($_POST['sobreNome']);
+        $Cliente->setSobreNome($_POST['sobreNome']);
         $Cliente->setCpf($_POST['cpf']);
 
         Sessao::gravaFormulario($_POST);
 
 
-        $clienteValidador = new ClienteValidador();
-        $resultadoValidacao = $clienteValidador->validar($Cliente);
-
-        if($resultadoValidacao->getErros()){
-            Sessao::gravaErro($resultadoValidacao->validar($Cliente));
-            $this->redirect('/cliente/cadastroCliente');
-        }
-
         $clienteDAO = new ClienteDAO();
-        $clienteDAO->salvar($Cliente);
+        $clienteDAO->salvarCliente($Cliente);
 
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
         Sessao::limpaErro();
 
-        $this-redirect('/cliente');
+        $this->redirect('/cliente');
 
     }
 
@@ -87,7 +80,7 @@ class ClienteController extends Controller{
         $Cliente = new Cliente();
         $Cliente->setCodCliente($_POST['codCliente']);
         $Cliente->setNome($_POST['nome']);
-        $Cliente->setSobeNome($_POST['sobreNome']);
+        $Cliente->setSobreNome($_POST['sobreNome']);
         $Cliente->setCpf($_POST['cpf']);
 
         Sessao::gravaFormulario($_POST);

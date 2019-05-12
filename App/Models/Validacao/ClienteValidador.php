@@ -3,7 +3,7 @@
 namespace App\Models\Validacao;
 
 
-use \App\Models\ResultadoValidacao;
+use \App\Models\Validacao\ResultadoValidacao;
 use \App\Models\Entidades\Cliente;
 
 

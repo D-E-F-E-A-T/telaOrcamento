@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="quantidade">CPF</label>
-                    <input type="number" class="form-control" name="CPF" placeholder="CPF" value="<?php echo $Sessao::retornaValorFormulario('cpf'); ?>" required>
+                    <input type="number" class="form-control" name="cpf" placeholder="CPF" value="<?php echo $Sessao::retornaValorFormulario('cpf'); ?>" required>
 
             </div>
 

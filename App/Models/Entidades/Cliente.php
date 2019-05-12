@@ -7,71 +7,12 @@
     class Cliente{
 
         private $codCliente;
-        private $nome;
-        private $sobeNome;
+        private $nomeCliente;
+        private $sobreNomeCliente;
         private $cpf;
         private $dataCastroCliente;
 
 
-        /**
-         * Get the value of nome
-         */ 
-        public function getNome()
-        {
-                return $this->nome;
-        }
-
-        /**
-         * Set the value of nome
-         *
-         * @return  self
-         */ 
-        public function setNome($nome)
-        {
-                $this->nome = $nome;
-
-                return $this;
-        }
-
-        /**
-         * Get the value of sobeNome
-         */ 
-        public function getSobeNome()
-        {
-                return $this->sobeNome;
-        }
-
-        /**
-         * Set the value of sobeNome
-         *
-         * @return  self
-         */ 
-        public function setSobeNome($sobeNome)
-        {
-                $this->sobeNome = $sobeNome;
-
-                return $this;
-        }
-
-        /**
-         * Get the value of cpf
-         */ 
-        public function getCpf()
-        {
-                return $this->cpf;
-        }
-
-        /**
-         * Set the value of cpf
-         *
-         * @return  self
-         */ 
-        public function setCpf($cpf)
-        {
-                $this->cpf = $cpf;
-
-                return $this;
-        }
 
         /**
          * Get the value of dataCastroCliente
@@ -112,6 +53,64 @@
 
                 return $this;
         }
-    }
 
-?>
+        /**
+         * Get the value of nomeCliente
+         */ 
+        public function getNomeCliente()
+        {
+                return $this->nomeCliente;
+        }
+
+        /**
+         * Set the value of nomeCliente
+         *
+         * @return  self
+         */ 
+        public function setNomeCliente($nomeCliente)
+        {
+                $this->nomeCliente = $nomeCliente;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of sobreNomeCliente
+         */ 
+        public function getSobreNomeCliente()
+        {
+                return $this->sobreNomeCliente;
+        }
+
+        /**
+         * Set the value of sobreNomeCliente
+         *
+         * @return  self
+         */ 
+        public function setSobreNomeCliente($sobreNomeCliente)
+        {
+                $this->sobreNomeCliente = $sobreNomeCliente;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of cpf
+         */ 
+        public function getCpf()
+        {
+                return $this->cpf;
+        }
+
+        /**
+         * Set the value of cpf
+         *
+         * @return  self
+         */ 
+        public function setCpf($cpf)
+        {
+                $this->cpf = $cpf;
+
+                return $this;
+        }
+}
