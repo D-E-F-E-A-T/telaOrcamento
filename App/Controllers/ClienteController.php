@@ -35,8 +35,8 @@ class ClienteController extends Controller{
     public function salvarCliente(){
 
         $Cliente = new Cliente();
-        $Cliente->setNome($_POST['nome']);
-        $Cliente->setSobreNome($_POST['sobreNome']);
+        $Cliente->setNomeCliente($_POST['nome']);
+        $Cliente->setSobreNomeCliente($_POST['sobreNome']);
         $Cliente->setCpf($_POST['cpf']);
 
         Sessao::gravaFormulario($_POST);

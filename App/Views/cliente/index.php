@@ -27,7 +27,7 @@
                         <td class="info">Nome</td>
                         <td class="info">Sobre Nome</td>
                         <td class="info">CPF</td>
-                        <!--td class="info">Data Cadastro</td-->
+                        <td class="info">Data Cadastro</td>
                         <td class="info"></td>
                     </tr>
                     <?php
@@ -37,6 +37,7 @@
                             <td><?php echo $cliente->getNomeCliente(); ?></td>
                             <td><?php echo $cliente->getSobreNomeCliente(); ?></td>
                             <td><?php echo $cliente->getCpf(); ?></td>
+                            <td><?php echo $cliente->getDataCadastroCliente()->format('d/m/y'); ?></td>
                             <td>
                                 <a href="http://<?php echo APP_HOST; ?>/cliente/edicao/<?php echo $cliente->getCodCliente(); ?>" class="btn btn-info btn-sm">Editar</a>
                                 <a href="http://<?php echo APP_HOST; ?>/cliente/exclusao/<?php echo $cliente->getCodCliente(); ?>" class="btn btn-danger btn-sm">Excluir</a>

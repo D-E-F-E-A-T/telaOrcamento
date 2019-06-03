@@ -3,13 +3,41 @@
 namespace App\Models\Entidades;
 
 class enderecoCleinte{
-
+    private $codEndereco;
     private $logradouro;
     private $numero;
     private $cep;
     private $cidade;
     private $estado;
-    private $codCliente;
+    private $enderecoCliente;
+
+
+
+    public function __construct()
+    {
+        $this->enderecoCliente = new EnderecoCliente();
+    }
+
+
+    /**
+     * Get the value of codEndereco
+     */ 
+    public function getCodEndereco()
+    {
+        return $this->codEndereco;
+    }
+
+    /**
+     * Set the value of codEndereco
+     *
+     * @return  self
+     */ 
+    public function setCodEndereco($codEndereco)
+    {
+        $this->codEndereco = $codEndereco;
+
+        return $this;
+    }
 
     /**
      * Get the value of logradouro
@@ -111,24 +139,13 @@ class enderecoCleinte{
         return $this;
     }
 
-    /**
-     * Get the value of codCliente
-     */ 
-    public function getCodCliente()
-    {
-        return $this->codCliente;
-    }
 
     /**
-     * Set the value of codCliente
-     *
-     * @return  self
+     * Get the value of enderecoCliente
      */ 
-    public function setCodCliente($codCliente)
+    public function getEnderecoCliente()
     {
-        $this->codCliente = $codCliente;
-
-        return $this;
+        return $this->enderecoCliente;
     }
 }
 

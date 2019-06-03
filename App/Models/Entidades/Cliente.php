@@ -10,29 +10,8 @@
         private $nomeCliente;
         private $sobreNomeCliente;
         private $cpf;
-        private $dataCastroCliente;
+        private $dataCadastroCliente;
 
-
-
-        /**
-         * Get the value of dataCastroCliente
-         */ 
-        public function getDataCastroCliente()
-        {
-                return new DateTime($this->dataCastroCliente);
-        }
-
-        /**
-         * Set the value of dataCastroCliente
-         *
-         * @return  self
-         */ 
-        public function setDataCastroCliente($dataCastroCliente)
-        {
-                $this->dataCastroCliente = $dataCastroCliente;
-
-                return $this;
-        }
 
         /**
          * Get the value of codCliente
@@ -110,6 +89,26 @@
         public function setCpf($cpf)
         {
                 $this->cpf = $cpf;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of dataCastroCliente
+         */ 
+        public function getDataCadastroCliente()
+        {
+                return new DateTime($this->dataCadastroCliente);
+        }
+
+        /**
+         * Set the value of dataCastroCliente
+         *
+         * @return  self
+         */ 
+        public function setDataCadastroCliente($dataCadastroCliente)
+        {
+                $this->dataCastroCliente = $dataCadastroCliente;
 
                 return $this;
         }
